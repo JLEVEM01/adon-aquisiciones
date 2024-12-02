@@ -1,0 +1,106 @@
+<odoo>
+    <data>
+
+        <!--view tree-->
+        <record id="view_proveedores_tree" model="ir.ui.view">
+            <field name="name">adquisiciones.proveedores.tree</field>
+            <field name="model">adquisiciones.proveedores</field>
+            <field name="arch" type="xml">
+                <tree string="Proveedores">
+                    <field name="nombre"/>
+                    <field name="RFC"/>
+                    <field name="Tipo"/>
+                    <field name="Estatus"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista formulario para crear y editar proveedores -->
+        <record id="view_proveedores_form" model="ir.ui.view">
+            <field name="name">adquisiciones.proveedores.form</field>
+            <field name="model">adquisiciones.proveedores</field>
+            <field name="arch" type="xml">
+                <form string="Proveedor">
+                    <sheet>
+                        <group>
+                            <field name="nombre"/>
+                            <field name="RFC"/>
+                        </group>
+                        <group>
+                            <field name="Tipo"/>
+                            <field name="Estatus"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para acceder a la vista del modelo -->
+        <record id="action_proveedores" model="ir.actions.act_window">
+            <field name="name">Proveedores</field>
+            <field name="res_model">adquisiciones.proveedores</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú para acceder a los proveedores desde el módulo -->
+        <menuitem id="menu_adquisiciones_root" name="Adquisiciones"/>
+        <menuitem id="menu_proveedores" name="Proveedores" parent="menu_adquisiciones_root" action="action_proveedores"/>
+
+        <!-- explicit list view definition -->
+        <!--
+            <record model="ir.ui.view" id="adquisiciones.list">
+              <field name="name">adquisiciones list</field>
+              <field name="model">adquisiciones.adquisiciones</field>
+              <field name="arch" type="xml">
+                <list>
+                  <field name="name"/>
+                  <field name="value"/>
+                  <field name="value2"/>
+                </list>
+              </field>
+            </record>
+        -->
+
+        <!-- actions opening views on models -->
+        <!--
+            <record model="ir.actions.act_window" id="adquisiciones.action_window">
+              <field name="name">adquisiciones window</field>
+              <field name="res_model">adquisiciones.adquisiciones</field>
+              <field name="view_mode">list,form</field>
+            </record>
+        -->
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="adquisiciones.action_server">
+              <field name="name">adquisiciones server</field>
+              <field name="model_id" ref="model_adquisiciones_adquisiciones"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "list,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+        <!--
+            <menuitem name="adquisiciones" id="adquisiciones.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+            <menuitem name="Menu 1" id="adquisiciones.menu_1" parent="adquisiciones.menu_root"/>
+            <menuitem name="Menu 2" id="adquisiciones.menu_2" parent="adquisiciones.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="adquisiciones.menu_1_list" parent="adquisiciones.menu_1"
+                      action="adquisiciones.action_window"/>
+            <menuitem name="Server to list" id="adquisiciones" parent="adquisiciones.menu_2"
+                      action="adquisiciones.action_server"/>
+        -->
+    </data>
+</odoo>
